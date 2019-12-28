@@ -1,14 +1,14 @@
 ---
 page_type: sample
 languages:
-- csharp
+- nodejs
 products:
-- dotnet
+- nodejs
 description: "Add 150 character max description"
 urlFragment: "update-this-to-unique-url-stub"
 ---
 
-# Official Microsoft Sample
+# AKS Workshop - ratings-api sample code
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
@@ -18,36 +18,48 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-Give a short description for your sample here. What does it do and why is it important?
+This code is part of the Microsoft Learn module of the AKS workshop. It provides the API for the ratings application. The API connects to a MongoDB to store and retrieve data.
 
 ## Contents
 
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
-
 | File/folder       | Description                                |
 |-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
+| `routes`          | API endpoint implementation.               |
+| `models`          | Representation of API data model.          |
+| `data`            | Data to be preloaded into the database.    |
+| `views`           | Handelbars HTML view templates.            |
+| `bin/www`         | NodeJS web server startup file.            |
+| `app.js`          | Express NodeJS application startup file.   |
 | `.gitignore`      | Define what to ignore at commit time.      |
-| `CHANGELOG.md`    | List of changes to the sample.             |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
+| `.dockerignore`   | Define what to ignore at build time.       |
+| `Dockerfile`      | Define how the Docker image is built.      |
 | `README.md`       | This README file.                          |
 | `LICENSE`         | The license for the sample.                |
 
 ## Prerequisites
 
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+To build this sample locally, you can either build using Docker, or using NPM.
+
+- Install [Docker](https://www.docker.com/get-started)
+- Install [NodeJS](https://nodejs.org/en/download/)
 
 ## Setup
 
-Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
+- To build using Docker, in the project folder, run `docker build -t ratings-api .`
+- To build using NPM, in the project folder, run `npm install`
 
 ## Running the sample
 
-Outline step-by-step instructions to execute the sample and see its output. Include steps for executing the sample from the IDE, starting specific services in the Azure portal or anything related to the overall launch of the code.
+- To run using Docker, run `docker run -it -p 3000:3000 ratings-api`
+- To run using NPM, run `npm start`
 
-## Key concepts
+Required configuration via environment variables:
 
-Provide users with more context on the tools and services used in the sample. Explain some of the code that is being used and how services interact with each other.
+- MONGODB_URI: MongoDB connection is configured using an environment variable called `MONGODB_URI`. This URI should look like `mongodb://[username]:[password]@[endpoint]:27017/ratingsdb`
+
+The API exposes port 3000.
+
+You should then be able to access the API at <http://localhost:3000/api/items>
 
 ## Contributing
 
