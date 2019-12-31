@@ -28,7 +28,7 @@ This code is part of the Microsoft Learn module of the AKS workshop. It provides
 | `models`          | Representation of API data model.          |
 | `data`            | Data to be preloaded into the database.    |
 | `views`           | Handelbars HTML view templates.            |
-| `bin/www`         | NodeJS web server startup file.            |
+| `server.js`       | NodeJS web server startup file.            |
 | `app.js`          | Express NodeJS application startup file.   |
 | `.gitignore`      | Define what to ignore at commit time.      |
 | `.dockerignore`   | Define what to ignore at build time.       |
