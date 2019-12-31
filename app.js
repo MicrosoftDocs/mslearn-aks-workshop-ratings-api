@@ -46,9 +46,8 @@ promise.then(
 ).catch(
   err => {
     console.error('ERROR: UNABLE TO CONNECT TO ' + process.env.MONGODB_URI);
-    console.error('Make sure you have set the environment variable MONGODB_URI to the correct endpoint.')
+    console.error('Make sure you have set the environment variable MONGODB_URI to the correct endpoint.');
     console.error(err.message);
-    process.exit(1);
   }
 );
 

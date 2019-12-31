@@ -4,8 +4,8 @@ languages:
 - nodejs
 products:
 - nodejs
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+description: "This code is part of the Microsoft Learn module of the AKS workshop. It provides the API for the ratings application. The API connects to a MongoDB to store and retrieve data."
+urlFragment: "aksworkshop-ratings-api"
 ---
 
 # AKS Workshop - ratings-api sample code
