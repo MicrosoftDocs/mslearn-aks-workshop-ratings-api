@@ -23,6 +23,16 @@ router.get("/items", function(req, res, next) {
     .catch(next);
 });
 
+/* CPU intensive endpoint */
+router.get("/loadtest", function(req, res, next) {
+  var x = 0.0001;
+  for (var i = 0; i <= 1000000; i++) {
+    x += Math.sqrt(x);
+  }
+  var response = new jsonResponse("Load test /api endpoint for rating-api", 200, x);
+  res.json(response).status(response.status);
+});
+
 /* GET rated items */
 router.get("/items/rated", function(req, res, next) {
   var items = {};
