@@ -57,7 +57,7 @@ promise.then(
     // Check if the items are empty, insert mock data
     Item.count({}, function(err, c) {
 	if(c === undefined || c == 0) {
-        console.dir('No items found in the database. Loading data.');
+        console.dir('No items found in the database. Loading data. (tt)');
         var itemsMock = require('./data/items.json');
         Item.collection.insertMany(itemsMock, function(err,r) {
           if(err) {
@@ -67,14 +67,14 @@ promise.then(
           }
         });
       } else {
-        console.dir( c + ' items found in the database. Skipping loading data.');
+        console.dir( c + ' items found in the database. Skipping loading data. (tt)');
       }
     });
 
     // Check if the sites are empty, insert mock data
     Site.count({}, function(err, c) {
-	if(c === undefined || c == 0)
-        console.dir('No sites found in the database. Loading data.');
+	if(c === undefined || c == 0) {
+        console.dir('No sites found in the database. Loading data. (tt)');
         var sitesMock = require('./data/sites.json');
         Site.collection.insertMany(sitesMock, function(err,r) {
           if(err) {
@@ -84,7 +84,7 @@ promise.then(
           }
         });
       } else {
-        console.dir( c + ' sites found in the database. Skipping loading data.');
+        console.dir( c + ' sites found in the database. Skipping loading data. (tt)');
       }
     });
     
