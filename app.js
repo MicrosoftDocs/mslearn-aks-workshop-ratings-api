@@ -57,7 +57,7 @@ promise.then(
     // Check if the items are empty, insert mock data
     Item.count({}, function(err, c) {
 	if(c === undefined || c == 0) {
-        console.dir('No items found in the database. Loading data. );
+        console.dir('No items found in the database. Loading data.');
         var itemsMock = require('./data/items.json');
         Item.collection.insertMany(itemsMock, function(err,r) {
           if(err) {
