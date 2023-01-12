@@ -44,7 +44,8 @@ if(process.env.MONGODB_URI == undefined) {
   console.error("process.env.MONGODB_URI is undefined. You need to provide the mongoDB connection information.");
 }
 
-var promise = mongoose.connect(process.env.MONGODB_URI, connectOptions);
+// var promise = mongoose.connect(process.env.MONGODB_URI, connectOptions);
+var promise = mongoose.connect(process.env.MONGODB_URI);
 promise.then(
   () => {
     console.dir('CONNECTED TO ' + process.env.MONGODB_URI);
