@@ -44,7 +44,8 @@ if(process.env.MONGODB_URI == undefined) {
   console.error("process.env.MONGODB_URI is undefined. You need to provide the mongoDB connection information.");
 }
 
-var promise = mongoose.connect(process.env.MONGODB_URI, connectOptions);
+// var promise = mongoose.connect(process.env.MONGODB_URI, connectOptions);
+var promise = mongoose.connect(process.env.MONGODB_URI);
 promise.then(
   () => {
     console.dir('CONNECTED TO ' + process.env.MONGODB_URI);
@@ -55,7 +56,7 @@ promise.then(
 
     // Check if the items are empty, insert mock data
     Item.count({}, function(err, c) {
-      if(c == 0) {
+	if(c === undefined || c == 0) {
         console.dir('No items found in the database. Loading data.');
         var itemsMock = require('./data/items.json');
         Item.collection.insertMany(itemsMock, function(err,r) {
@@ -72,8 +73,8 @@ promise.then(
 
     // Check if the sites are empty, insert mock data
     Site.count({}, function(err, c) {
-      if(c == 0) {
-        console.dir('No sites found in the database. Loading data.');
+	if(c === undefined || c == 0) {
+        console.dir('No sites found in the database. Loading data. (tt)');
         var sitesMock = require('./data/sites.json');
         Site.collection.insertMany(sitesMock, function(err,r) {
           if(err) {
@@ -83,7 +84,7 @@ promise.then(
           }
         });
       } else {
-        console.dir( c + ' sites found in the database. Skipping loading data.');
+        console.dir( c + ' sites found in the database. Skipping loading data. (tt)');
       }
     });
     
